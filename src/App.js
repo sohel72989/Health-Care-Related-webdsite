@@ -1,43 +1,47 @@
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Home from './Pages/Home/Home'
-import Header from './Pages/Header/Header'
-import Service from './Pages/Service/Service'
-import Banner from './Pages/Banner/Banner'
-import Footer from './Pages/Footer/Footer';
-import NotFound from './Pages/NotFound/NotFound';
-import AuthProvider from './Pages/Context/AuthProvider';
-import PrivateRoute from './Pages/PrivateRoute/privateRoute';
-import Register from './Pages/Register/Register';
-import Login from './Pages/Login/Login';
+import AboutUs from './component/AboutUs/AboutUs';
+import Home from './component/Home/Home';
+import Login from './component/Login/Login';
+import Registration from './component/Registratration/Registration';
+import NotFound from './component/NotFound/NotFound';
+import ServiceDetails from './component/ServiceDetails/ServiceDetails';
+import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+import Doctors from './component/Doctors/Doctors';
+
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <AuthProvider>
         <Router>
-          <Header></Header>
           <Switch>
-            <Route path="/home">
+            <Route exact path="/">
               <Home></Home>
             </Route>
-            <Route path="/register">
-              <Register></Register>
+            <Route exact path="/home">
+              <Home></Home>
             </Route>
-            <Route path="/login">
+            <PrivateRoute exact path="/home/:serviceId">
+              <ServiceDetails></ServiceDetails>
+            </PrivateRoute>
+            <PrivateRoute exact path="/doctors">
+              <Doctors></Doctors>
+            </PrivateRoute>
+            <PrivateRoute exact path="/about-us">
+              <AboutUs></AboutUs>
+            </PrivateRoute>
+            <Route exact path="/login">
               <Login></Login>
             </Route>
-            <PrivateRoute path="/service">
-              <Service></Service>
-            </PrivateRoute>
-            <PrivateRoute path="/banner">
-              <Banner></Banner>
-            </PrivateRoute>
-
-            <Route path="/*">
+            <Route exact path="/registration">
+              <Registration></Registration>
+            </Route>
+            <Route exact path="*">
               <NotFound></NotFound>
             </Route>
           </Switch>
-          <Footer></Footer>
         </Router>
       </AuthProvider>
     </div>
