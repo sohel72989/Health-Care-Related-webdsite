@@ -8,7 +8,7 @@ const AboutUs = () => {
             <Header></Header>
             <div className="container py-5">
                 <div className="text-center pb-5">
-                    <h1>ABOUT PureSmile</h1>
+                    <h1>ABOUT PureDentSmile</h1>
                     <p>PureSmile PROFILE & HISTORY</p>
                 </div>
                 <div className="row">
